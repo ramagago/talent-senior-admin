@@ -1,7 +1,7 @@
 import axios from "axios";
 import { stringify } from "query-string";
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = import.meta.env.VITE_API_SERVER_URL;
 
 const dataProvider = {
   getList: async (
@@ -56,6 +56,13 @@ const dataProvider = {
       );
     }
   },
+
+  // getMany: async () => {
+  //   return [];
+  // },
+  // getManyReference: async () => {
+  //   return [];
+  // },
 
   // create: async (resource, params) => {
   //   const url = `${API_BASE_URL}/${resource}`;

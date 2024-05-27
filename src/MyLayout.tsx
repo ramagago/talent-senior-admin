@@ -1,12 +1,8 @@
 import { Box } from "@mui/material";
-import { AppBar, Menu, Sidebar } from "react-admin";
-import { PersonFilterSideBar } from "./components/PersonFilterSideBar";
-import MyAppBar from "./components/MyAppBar";
-import SwipeableMenu from "./components/SwippeableMenu";
+import { AppBar } from "react-admin";
 import MyToolBar from "./components/MyAppBar/ToolBar";
-import { MyMenu } from "./components/MyMenu";
 
-const MyLayout = ({ children, dashboard }) => (
+const MyLayout = ({ children }) => (
   <Box
     sx={{
       display: "flex",

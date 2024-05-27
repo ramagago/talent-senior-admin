@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthProvider } from "react-admin";
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = import.meta.env.VITE_API_SERVER_URL;
 /**
  * This authProvider is only for test purposes. Don't use it in production.
  */
