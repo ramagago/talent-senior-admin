@@ -1,8 +1,8 @@
 import { Button, FilterLiveSearch, SET_FILTER } from "react-admin";
 import { Card, CardContent } from "@mui/material";
 import { useListContext } from "react-admin";
-import Dropdown from "../MyMenu/Dropdown";
-import Slider from "../MyMenu/Slider";
+import Dropdown from "./Dropdown";
+import Slider from "./Slider";
 
 const countyPD = [
   { label: "Montevideo", value: "MONTEVIDEO" },

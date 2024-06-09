@@ -14,11 +14,12 @@ import {
   SimpleList,
   TopToolbar,
   ExportButton,
+  BulkDeleteButton,
 } from "react-admin";
 import { useMediaQuery, Theme, Grid } from "@mui/material";
-import { PersonFilterButton } from "./components/PersonFilterButton";
-import { PersonFilterSideBar } from "./components/PersonFilterSideBar";
-import Age from "./components/fields/Age";
+import { PersonFilterButton } from "../PersonFilterButton";
+import { PersonFilterSideBar } from "../PersonFilterSideBar";
+import Age from "../fields/Age";
 
 export const PersonList = () => {
   const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("md"));
@@ -48,7 +49,10 @@ export const PersonList = () => {
           }
         />
       ) : (
-        <Datagrid rowClick="show" bulkActionButtons={false}>
+        <Datagrid
+          rowClick="show"
+          bulkActionButtons={<BulkDeleteButton mutationMode="pessimistic" />}
+        >
           <TextField source="name" label="Nombre" />
           <TextField source="surname" label="Apellido" />
           {isMedium ? <></> : <Age label="Edad" sortBy="birthday" />}
@@ -102,51 +106,57 @@ export const PersonShow = () => (
         </Grid>
       </Grid>
 
-      <ArrayField source="references">
+      <ArrayField source="references" label="Referencias">
         <Datagrid bulkActionButtons={false}>
-          <TextField source="referenceName" />
-          <TextField source="referenceSurname" />
-          <TextField source="referencePhone" />
-          <TextField source="referenceCompany" />
-          <TextField source="referenceRole" />
-          <TextField source="referenceType" />
+          <TextField source="referenceName" label="Nombre" />
+          <TextField source="referenceSurname" label="Apellido" />
+          <TextField source="referencePhone" label="Teléfono" />
+          <TextField source="referenceCompany" label="Empresa" />
+          <TextField source="referenceRole" label="Cargo" />
+          <TextField source="referenceType" label="Tipo de referencia" />
         </Datagrid>
       </ArrayField>
-      <ArrayField source="studies">
+      <ArrayField source="studies" label="Estudios">
         <Datagrid bulkActionButtons={false}>
-          <TextField source="level" />
-          <TextField source="title" />
-          <TextField source="institute" />
-          <TextField source="fieldOfStudy" />
-          <DateField source="startStudyDate" />
-          <BooleanField source="currentlyStudying" />
-          <TextField source="cityStudy" />
-          <TextField source="countyStudy" />
-          <DateField source="endStudyDate" />
+          <TextField source="level" label="Nivel de estudios" />
+          <TextField source="title" label="Título" />
+          <TextField source="institute" label="Instituto" />
+          <TextField source="fieldOfStudy" label="Área de estudio" />
+          <DateField source="startStudyDate" label="Fecha de inicio" />
+          <BooleanField
+            source="currentlyStudying"
+            label="Actualmente estudiando"
+          />
+          <TextField source="cityStudy" label="Ciudad" />
+          <TextField source="countyStudy" label="Departamento" />
+          <DateField source="endStudyDate" label="Fecha de finalización" />
         </Datagrid>
       </ArrayField>
-      <ArrayField source="workExperiences">
+      <ArrayField source="workExperiences" label="Experiencia laboral">
         <Datagrid bulkActionButtons={false}>
-          <TextField source="role" />
-          <TextField source="company" />
-          <TextField source="workField" />
-          <TextField source="positionLevel" />
-          <TextField source="peopleInCharge" />
-          <BooleanField source="currentlyWorking" />
-          <TextField source="skills" />
-          <DateField source="endWorkDate" />
-          <TextField source="salary" />
-          <ArrayField source="skills" />
-          <DateField source="startWorkDate" />
-          <TextField source="task" />
+          <TextField source="role" label="Cargo" />
+          <TextField source="company" label="Empresa" />
+          <TextField source="workField" label="Rubro" />
+          <TextField source="positionLevel" label="Cargo" />
+          <TextField source="peopleInCharge" label="Personas a cargo" />
+          <BooleanField
+            source="currentlyWorking"
+            label="Actualmente trabajando"
+          />
+          <TextField source="skills" label="Conocimientos" />
+
+          <TextField source="salary" label="Salario" />
+          <DateField source="startWorkDate" label="Fecha de inicio" />
+          <DateField source="endWorkDate" label="Fecha de finalización" />
+          <TextField source="task" label="Tareas" />
         </Datagrid>
       </ArrayField>
-      <ArrayField source="languages">
+      <ArrayField source="languages" label="Idiomas">
         <Datagrid bulkActionButtons={false}>
-          <TextField source="languageName" />
-          <NumberField source="spokenLevel" />
-          <NumberField source="readLevel" />
-          <NumberField source="writtenLevel" />
+          <TextField source="languageName" label="Idioma" />
+          <NumberField source="spokenLevel" label="Nivel oral" />
+          <NumberField source="readLevel" label="Nivel de lectura" />
+          <NumberField source="writtenLevel" label="Nivel escrito" />
         </Datagrid>
       </ArrayField>
     </SimpleShowLayout>

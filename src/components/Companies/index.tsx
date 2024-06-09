@@ -8,6 +8,7 @@ import {
   EmailField,
   UrlField,
   TextInput,
+  BulkDeleteButton,
 } from "react-admin";
 import { useMediaQuery, Theme } from "@mui/material";
 
@@ -25,13 +26,16 @@ export const CompanyList = () => {
           tertiaryText={(record) => record.companyWebsite}
         />
       ) : (
-        <Datagrid rowClick="show" bulkActionButtons={false}>
-          <TextField source="companyName" />
-          <TextField source="name" />
-          <TextField source="surname" />
-          <TextField source="companyEmail" />
-          <TextField source="companyPhone" />
-          <TextField source="companyWebsite" />
+        <Datagrid
+          rowClick="show"
+          bulkActionButtons={<BulkDeleteButton mutationMode="pessimistic" />}
+        >
+          <TextField source="companyName" label="Empresa" />
+          <TextField source="name" label="Nombre" />
+          <TextField source="surname" label="Apellido" />
+          <TextField source="companyEmail" label="Email" />
+          <TextField source="companyPhone" label="Teléfono" />
+          <TextField source="companyWebsite" label="Sitio web" />
         </Datagrid>
       )}
     </List>

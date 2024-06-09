@@ -57,6 +57,25 @@ const dataProvider = {
     }
   },
 
+  delete: async (resource, params) => {
+    const url = `${API_BASE_URL}/${resource}/${params.id}`;
+    await axios.delete(url, {
+      headers: { "x-api-key": localStorage.getItem("apiKey") },
+    });
+    return { data: params.previousData };
+  },
+
+  deleteMany: async (resource, params) => {
+    const promises = params.ids.map((id) => {
+      const url = `${API_BASE_URL}/${resource}/${id}`;
+      return axios.delete(url, {
+        headers: { "x-api-key": localStorage.getItem("apiKey") },
+      });
+    });
+    await Promise.all(promises);
+    return { data: params.ids };
+  },
+
   // getMany: async () => {
   //   return [];
   // },
@@ -94,25 +113,6 @@ const dataProvider = {
   //   const promises = params.ids.map((id) => {
   //     const url = `${API_BASE_URL}/${resource}/${id}`;
   //     return axios.put(url, params.data, {
-  //       headers: { "x-api-key": localStorage.getItem("apiKey") },
-  //     });
-  //   });
-  //   await Promise.all(promises);
-  //   return { data: params.ids };
-  // },
-
-  // delete: async (resource, params) => {
-  //   const url = `${API_BASE_URL}/${resource}/${params.id}`;
-  //   await axios.delete(url, {
-  //     headers: { "x-api-key": localStorage.getItem("apiKey") },
-  //   });
-  //   return { data: params.previousData };
-  // },
-
-  // deleteMany: async (resource, params) => {
-  //   const promises = params.ids.map((id) => {
-  //     const url = `${API_BASE_URL}/${resource}/${id}`;
-  //     return axios.delete(url, {
   //       headers: { "x-api-key": localStorage.getItem("apiKey") },
   //     });
   //   });
