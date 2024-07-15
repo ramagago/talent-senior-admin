@@ -175,7 +175,7 @@ export const PersonFilterSideBar = () => {
 
   return (
     <>
-      <Card sx={{ order: -1, mr: 2, mt: 9, width: 300 }}>
+      <Card sx={{ order: -1, mr: 2, mt: 9, width: 500 }}>
         <CardContent>
           <FilterLiveSearch source="search" label="Search" />
           <Dropdown

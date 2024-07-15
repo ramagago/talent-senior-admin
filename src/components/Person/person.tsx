@@ -23,9 +23,6 @@ import Age from "../fields/Age";
 
 export const PersonList = () => {
   const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("md"));
-  const isMedium = useMediaQuery<Theme>((theme) =>
-    theme.breakpoints.down("lg")
-  );
 
   const ListActions = () => (
     <TopToolbar>
@@ -55,8 +52,8 @@ export const PersonList = () => {
         >
           <TextField source="name" label="Nombre" />
           <TextField source="surname" label="Apellido" />
-          {isMedium ? <></> : <Age label="Edad" sortBy="birthday" />}
-          {isMedium ? <></> : <TextField source="cityPD" label="Ciudad" />}
+          <Age label="Edad" sortBy="birthday" />
+          <TextField source="cityPD" label="Ciudad" />
 
           <ArrayField source="studies" sortable={false} label="Título">
             <SingleFieldList>
