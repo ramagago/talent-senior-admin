@@ -1,5 +1,5 @@
 import { Button, FilterLiveSearch, SET_FILTER } from "react-admin";
-import { Card, CardContent } from "@mui/material";
+import { Card, CardContent, useMediaQuery, Theme } from "@mui/material";
 import { useListContext } from "react-admin";
 import Dropdown from "./Dropdown";
 import Slider from "./Slider";
@@ -170,12 +170,13 @@ const positionLevel = [
 
 export const PersonFilterSideBar = () => {
   const { displayedFilters, setFilters } = useListContext();
+  const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("md"));
 
   if (!displayedFilters.main) return;
 
   return (
     <>
-      <Card sx={{ order: -1, mr: 2, mt: 9, width: 600 }}>
+      <Card sx={{ order: -1, mr: 2, mt: 9, width: isSmall ? 300 : 600 }}>
         <CardContent>
           <FilterLiveSearch source="search" label="Search" />
           <Dropdown
